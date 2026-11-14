@@ -1,0 +1,35 @@
+{
+  "name": "biblioteca-dds-27",
+  "version": "1.0.0",
+  "description": "Sistema de biblioteca top",
+  "main": "server.js",
+  "scripts": {
+    "test": "server", 
+    "server": "nodemon ./server.js localhost 3000n"
+  },
+  "keywords": [
+    "livros",
+    "biblioteca",
+    "dds-27",
+    "senai"
+  ],
+  "author": "Gregory",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.4.2",
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "jsonwebtoken": "^2.4.0",
+    "multer": "^2.4.0",
+    "mysql2": "^3.22.3"
+  },
+  
+    "devDependencies": {
+      "nodemon": "^3.1.14"
+    }
+    
+}
