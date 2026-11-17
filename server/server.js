@@ -15,6 +15,11 @@ app.set("view engine", "ejs")
 //APONTAR PARA O EJS ONDE ESTÃO AS PAGINAS
 app.set("views", path.join(__dirname, "../client/views") )
 
+//IMPORTAÇÃO AS ROTAS DE USUARIO
+const usuarioRouter = require("./routes/usuarioRoutes.js")
+
+app.use("/usuarios", usuarioRouter)
+
 //CRIACAO DAS ROTAS
 //ROTAS PÚBLICAS
 app.get('/', (req, res) => {
@@ -47,5 +52,6 @@ const pool = require("./config/db.js");
       process.exit(1)
     }
   }
+
 )()
 
