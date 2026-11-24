@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+
+<main class="login-container flex-grow-1">
+    <div class="card card-dialog text-center">
+              
+        <h2 class="mt-0">Oops! Algo deu errado.</h2>
+        <!-- MOSTRA O ERRO -->
+        <p class="text-principal fs-5 my-3">
+            <%= mensagem %>
+        </p>
+
+        <!-- MOSTRA O ERRO NO CÓDIGO -->
+        <% if (typeof erro !== 'undefined' && erro) { %>
+            <p class="text-principal fs-5 my-3">
+                <%= erro %>
+            </p>
+        <% } %>
+
+        <button onclick="window.history.back()" class="btn btn-warning text-black w-100 mt-3">
+             Voltar
+        </button>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

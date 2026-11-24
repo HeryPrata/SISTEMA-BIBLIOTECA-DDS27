@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body style="background-color: violet;">
-    <h1>ESTOU NA PAGINA DE CADASTRAR UM USUARIO</h1>
-</body>
-</html>
+<%- include('../partials/header') %>
+<main class="bg-danger container my-2 flex-grow-1">
+    <h1 class="fg-accent fs-6x1">    
+        ESTOU NA PÁGINA DE CADASTRO DE USUARIO
+    </h1>
+
+
+    <div class="d-flex flex-column">
+        <!-- ACTION - FALA A ROTA QUE O BOTAO VAI ENVIAR AS INFORMACÕES -->
+        <form action="/usuarios/cadastrar" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" required>
+            </div>
+
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" required>
+            </div>
+            
+            <div>
+                <label for="perfil">Perfil:</label>
+                <select name="perfil" id="perfil">
+                    <option value="adm">Administrador</option>
+                    <option value="biblioteca">Bibliotecaria</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn-subtle theme-sucess mt-3">Entrar</button>
+    </div>
+</main>
+
+<!-- IMPORTACAO DO FOOTER -->
+<%- include('../partials/footer') %>

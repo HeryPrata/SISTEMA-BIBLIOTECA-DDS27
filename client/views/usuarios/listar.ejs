@@ -1,11 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body style="background-color: yellow">
-    <h1>ESTOU NA PAGINA DE LISTAR UM USUARIO</h1>
-</body>
-</html>
+<!-- IMPORTAÇÃO DO HEADER -->
+<%- include('../partials/header') %>
+
+    <main class="container my-2 flex-grow-1">
+        <h1 class="text-center"> 
+            ESTOU NA PÁGINA DE LISTAR OS USUÁRIOS 
+        </h1>
+
+        <!-- BOTÃO PARA PÁGINA DE CADASTRO -->
+        <a href="/usuarios/cadastrar">
+            <button class="btn-solid theme-accent"> + Novo usuário </button>
+        </a>
+
+        <!-- TABELA COM OS DADOS DOS USUÁRIOS -->
+        <table class=" table mt-5 table-bordered border-danger theme-danger fg-primary" >
+            <thead>
+                <tr>
+                    <th scope="col"> Id </th>
+                    <th scope="col"> Nome </th>
+                    <th scope="col"> Email </th>
+                    <th scope="col"> Senha </th>
+                    <th scope="col"> Perfil </th>
+                    <th scope="col"> Ações </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- LAÇO DE REPETIÇÃO PARA INTERAGIR COM A LISTA VINDO DO BACKEND -->
+                <% listaUsuarios.forEach( user => { %>
+                    <!-- listaUsuarios - lista vinda do banco -->
+                    <!-- user - cada indice da lista "listaUsuarios" -->
+                     <tr>
+                        <td> <%= user.id_usuario %>  </td>
+                        <td> <%= user.nome %> </td>
+                        <td> <%= user.email %> </td>
+                        <td> <%= user.senha %> </td>
+                        <td> <%= user.perfil %> </td>
+                        <!-- BOTÕES DE AÇÕES -->
+                        <td class="d-flex justify-content-center gap-3">
+                            <!-- BOTÃO DE EDITAR -->
+                            <a href="usuarios/editar/<%= user.id_usuario %>">
+                                <button class="btn-solid theme-warning"> 
+                                    Editar 
+                                </button>
+                            </a>
+
+                            <!-- BOTÃO DE EXCLUIR -->
+                            <form 
+                                action="usuarios/deletar/<%= user.id_usuario %>" method="post"
+                                onsubmit="return confirm('Deseja realmente excluir esse usuário?')">
+                                <button type="submit" class="btn-solid theme-danger"> Excluir </button>
+                            </form>
+                        </td>
+                     </tr>
+                <% }) %>
+
+            </tbody>
+        </table>
+
+    </main>
+
+<!-- IMPORTAÇÃO DO FOOTER -->
+<%- include('../partials/footer') %>

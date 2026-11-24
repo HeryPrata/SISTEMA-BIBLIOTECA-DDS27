@@ -14,10 +14,29 @@ const port = process.env.PORT || 5000
 app.set("view engine", "ejs")
 //APONTAR PARA O EJS ONDE ESTÃO AS PAGINAS
 app.set("views", path.join(__dirname, "../client/views") )
+  
+//MIDDLEWARE PARA ENTENDER O JSON
+//LE OS DADOS
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+
+// CONFIGURACAO DO EXPRESS-SESSION
+const session = require("express-session")
+app.use(session ({
+    secret: 'cr7',
+    resave: false,
+    saveUninitialized: false
+}))
+
+//DISPONIBILIZA O USUARIO DA SESSAO PARA O EJS USAR
+app.use((req, res, next) => {
+  res.locals.usuario = req.session?.usuario || null;
+  req.usuario = req.session?.usuario || null;
+  next()
+})
 
 //IMPORTAÇÃO AS ROTAS DE USUARIO
 const usuarioRouter = require("./routes/usuarioRoutes.js")
-
 app.use("/usuarios", usuarioRouter)
 
 //CRIACAO DAS ROTAS
@@ -26,6 +45,9 @@ app.get('/', (req, res) => {
   res.render("index")
 })
 app.get('/login', (req, res) => {
+  if(req.session.usuario){
+      req.session.destroy()
+  }
   res.render("login")
 })
 

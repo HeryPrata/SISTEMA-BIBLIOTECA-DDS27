@@ -1,25 +1,34 @@
+// IMPORTAÇÃO DO MÓDULO DO EXPRESS
 const express = require("express")
-const router = express.Router() // LISTA DE ROTAS
+const router = express.Router()
 
-//IMPORTAR O CONTROLLER DO USUARIO
-const usuarioControllers = require("../controllers/usuarioControllers")
+// IMPORTAR O CONTROLLER DO USUÁRIO
+const usuarioControllers = require("../controllers/usuarioControllers.js")
 
-//ROTAS DO USUARIOS
-//LOGIN
+// ROTAS DO USUÁRIOS
+// LOGIN
 router.get("/login", usuarioControllers.login)
-//CRUD
 
-//MOSTRA A PAGINA DE CRIAR USUARIO
-router.get("/cadastro", (req,res) => {
-    res.render("usuarios/cadastrar")
-
+// CRUD
+// MOSTRA A PÁGINA DE CRIAR USUÁRIO
+router.get("/cadastrar", (req,res) => {
+    res.render("usuarios/cadastrar");
 })
 
-router.get("/", (req, res) =>{
-    res.send("Mostrando a lista de usuários")
-})
+// MANDAR AS INFORMACOES DE CADASTRO PARA O CONTROLLER
+router.post("/cadastrar", usuarioControllers.criar)
 
+// MOSTRA A PÁGINA DE EDITAR USUÁRIO
+router.get("/editar/:id", usuarioControllers.renderizarEditar)
 
+router.post("/editar/:id", usuarioControllers.editar)
 
-//EXPORTAR O ROUTER
+// MOSTRA A PÁGINA DE LISTAR USUÁRIOS
+router.get("/listar", usuarioControllers.listar)
+
+router.get("/", usuarioControllers.listar)
+
+//ROTA DE DELETAR UM USUARIO
+router.post("/deletar/:id", usuarioControllers.deletar)
+// EXPORTAR O ROUTER
 module.exports = router

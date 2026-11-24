@@ -1,0 +1,45 @@
+<%- include('../partials/header') %>
+<main class="bg-danger container my-2 flex-grow-1">
+    <h1 class="fg-accent fs-6x1">    
+        ESTOU NA PÁGINA DE CADASTRO DE LIVROS
+    </h1>
+
+
+    <div class="d-flex flex-column">
+        <!-- ACTION - FALA A ROTA QUE O BOTAO VAI ENVIAR AS INFORMACÕES -->
+        <form action="/usuarios/cadastrarLivro" method="post">
+            <div class="form-group">
+                <label for="autor">Autor:</label>
+                <input type="text" name="autor" id="autor" required>
+            </div>
+
+            <div>
+                <label for="titulo">Titulo:</label>
+                <input type="text" name="titulo" id="titulo" required>
+            </div>
+
+            <div>
+                <label for="anoLancamento">Ano de lancamento:</label>
+                <input type="text" name="anoLancamento" id="anoLancamento" required>
+            </div>
+
+             <div>
+                <label for="Genero">Genero:</label>
+                <input type="text" name="Genero" id="Genero" required>
+            </div>
+            
+            <div>
+                <label for="Visibilidade no sistema">Visibilidade no sistema:</label>
+                <select name="Visibilidade no sistema" id="Visibilidade no sistema">
+                    <option value="ativo">ativo</option>
+                    <option value="desativado">desativado</option>
+                </select>
+            </div>
+            
+            
+            <button type="submit" class="btn-subtle theme-sucess mt-3">Postar Livro</button>
+    </div>
+</main>
+
+<!-- IMPORTACAO DO FOOTER -->
+<%- include('../partials/footer') %>

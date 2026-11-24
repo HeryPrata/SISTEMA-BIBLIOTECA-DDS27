@@ -1,15 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>oi, mas no login</h1>
-    <label for="nome">Nome</label>
-    <input type="text" placeholder="Digite seu nome:">
-    
-    
-</body>
-</html>
+<!-- IMPORTAÇÃO DO HEADER -->
+<%- include('partials/header') %>
+
+    <main class="container my-2 flex-grow-1">
+        <h1 class="text-center"> 
+            ESTOU NA PÁGINA DE LOGIN 
+        </h1>
+
+        <div class="d-flex flex-column">
+            <form action="/usuarios/login" method="post">
+                <!-- CAIXINHA DE EMAIL -->
+                <div class="form-group">
+                    <label for="email"> Email: </label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+
+                <!-- CAIXINHA DE SENHA -->
+                 <div class="form-group">
+                    <label for="senha"> Senha: </label>
+                    <input type="password" name="senha" id="senha" required>
+                 </div>
+
+                <!-- BOTÃO DE ENVIO -->
+                <button type="submit" class="btn-subtle theme-accent mt-3"> 
+                    Entrar 
+                </button>
+            </form>
+        </div>
+    </main>
+
+<!-- IMPORTAÇÃO DO FOOTER -->
+<%- include('partials/footer') %>
